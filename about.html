@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About PPS Logistics | Company Information</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .bg-transition {
+            transition: opacity 1.2s ease-in-out;
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+        }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-[#121212] text-white overflow-x-hidden">
+
+    <div id="bg-employees" class="bg-transition opacity-100">
+        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover opacity-25" alt="Team background">
+    </div>
+
+    <nav class="fixed top-0 right-0 z-50 p-6 flex items-center space-x-6 transition-all duration-500" id="mainNav">
+        <div class="hidden md:flex space-x-6 text-sm font-bold uppercase tracking-widest items-center">
+            <a href="index.html" class="hover:text-blue-400">Home</a>
+            <a href="#" class="text-blue-500 border-b-2 border-blue-500 pb-1">About</a>
+            <a href="services.html" class="hover:text-blue-400">Services</a>
+            <a href="index.html#events" class="hover:text-blue-400">Events</a>
+            <a href="contact.html" class="hover:text-blue-400">Contact</a>
+            
+            <div class="flex items-center space-x-4 border-l pl-6 border-white/20">
+                <a href="#" class="hover:text-blue-500 transition-colors" id="btn-login" data-open="login">Login</a>
+                <a href="#" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition-all shadow-lg active:scale-95" id="btn-signup" data-open="signup">Create Account</a>
+            </div>
+        </div>
+        
+        <div class="flex space-x-4 text-lg border-l pl-6 border-white/20">
+            <a href="#" class="hover:text-blue-500"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="hover:text-blue-500"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-96 flex items-center justify-center pt-20">
+        <div class="text-center max-w-4xl px-4">
+            <h1 class="text-6xl md:text-7xl font-black text-white mb-4">About PPS Logistics</h1>
+            <p class="text-xl text-blue-300">Your Trusted Partner in Logistics Excellence</p>
+        </div>
+    </section>
+
+    <!-- Company History -->
+    <section class="reveal py-20 px-4 bg-[#121212]/90">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-black text-white mb-6">Our History</h2>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                        Prakash Parcel Services Limited started in 1992 as the parcel division of the erstwhile Prakash Group, one of India's few transport companies started in the 1960s.
+                    </p>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                        Over the decades, we have evolved and transformed into a renowned logistics service provider working with several corporate houses, MNCs, MSMEs & PSUs supporting their physical distribution across India.
+                    </p>
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        We believe that we are partners in the growth of our customers, and this philosophy guides every decision we make.
+                    </p>
+                </div>
+                <div class="relative h-96">
+                    <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=600&q=80" alt="Company history" class="w-full h-full object-cover rounded-lg border-4 border-blue-600 shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="reveal py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-black text-center text-white mb-16">Mission & Vision</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="bg-[#1a1a1a] rounded-2xl p-8 border-l-4 border-blue-600">
+                    <h3 class="text-3xl font-bold text-blue-400 mb-4">Our Mission</h3>
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        To provide innovative, reliable, and sustainable logistics solutions that empower businesses to reach their markets efficiently while maintaining the highest standards of service quality and customer satisfaction.
+                    </p>
+                </div>
+                <div class="bg-[#1a1a1a] rounded-2xl p-8 border-l-4 border-blue-400">
+                    <h3 class="text-3xl font-bold text-blue-300 mb-4">Our Vision</h3>
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        To become India's most trusted logistics partner, recognized for operational excellence, technological innovation, and unwavering commitment to customer success across all segments of the supply chain industry.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="reveal py-20 px-4 bg-[#1a1a1a]/50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-black text-center text-white mb-16">Why Choose PPS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-[#1a1a1a] rounded-xl p-8 border border-blue-600/30 hover:border-blue-600 transition">
+                    <i class="fas fa-clock text-blue-500 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">50+ Years Experience</h3>
+                    <p class="text-gray-400">Over 5 decades of industry knowledge and proven expertise in logistics management.</p>
+                </div>
+                <div class="bg-[#1a1a1a] rounded-xl p-8 border border-blue-600/30 hover:border-blue-600 transition">
+                    <i class="fas fa-network-wired text-blue-500 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Pan-India Network</h3>
+                    <p class="text-gray-400">Coverage across 19 states with presence in all major cities and industrial towns.</p>
+                </div>
+                <div class="bg-[#1a1a1a] rounded-xl p-8 border border-blue-600/30 hover:border-blue-600 transition">
+                    <i class="fas fa-certificate text-blue-500 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Quality Certified</h3>
+                    <p class="text-gray-400">ISO certified operations ensuring consistent quality and reliability in every service.</p>
+                </div>
+                <div class="bg-[#1a1a1a] rounded-xl p-8 border border-blue-600/30 hover:border-blue-600 transition">
+                    <i class="fas fa-users text-blue-500 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Expert Team</h3>
+                    <p class="text-gray-400">Well-experienced operations team with deep industry knowledge and best practices.</p>
+                </div>
+                <div class="bg-[#1a1a1a] rounded-xl p-8 border border-blue-600/30 hover:border-blue-600 transition">
+                    <i class="fas fa-leaf text-blue-500 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Sustainable Practices</h3>
+                    <p class="text-gray-400">Eco-friendly solutions with optimized routes and carbon footprint reduction.</p>
+                </div>
+                <div class="bg-[#1a1a1a] rounded-xl p-8 border border-blue-600/30 hover:border-blue-600 transition">
+                    <i class="fas fa-headset text-blue-500 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">24/7 Support</h3>
+                    <p class="text-gray-400">Round-the-clock customer support and real-time tracking for peace of mind.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="reveal py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-black text-center text-white mb-16">Our Core Values</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="flex gap-4">
+                    <div class="text-blue-500 text-2xl flex-shrink-0">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Partnership</h3>
+                        <p class="text-gray-400">We view our clients as partners in their growth journey, not just customers.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="text-blue-500 text-2xl flex-shrink-0">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Excellence</h3>
+                        <p class="text-gray-400">Commitment to quality and continuous improvement in all operations.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="text-blue-500 text-2xl flex-shrink-0">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Reliability</h3>
+                        <p class="text-gray-400">Consistent, dependable service that you can trust every single time.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="text-blue-500 text-2xl flex-shrink-0">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Innovation</h3>
+                        <p class="text-gray-400">Embracing technology and new approaches to improve logistics solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Board of Members -->
+    <section class="reveal py-20 px-4 bg-[#1a1a1a]/50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-black text-center text-white mb-16">Board of Members</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-[#1a1a1a] rounded-xl overflow-hidden border border-blue-600/30 hover:border-blue-600 transition">
+                    <div class="h-64 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-white/30"></i>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-white mb-2">Rajesh Kumar</h3>
+                        <p class="text-blue-400 font-semibold mb-3">Chairman & MD</p>
+                        <p class="text-gray-400 text-sm">Over 30 years of experience in logistics and transportation industry. Visionary leader driving innovation and excellence.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#1a1a1a] rounded-xl overflow-hidden border border-blue-600/30 hover:border-blue-600 transition">
+                    <div class="h-64 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-white/30"></i>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-white mb-2">Priya Sharma</h3>
+                        <p class="text-blue-400 font-semibold mb-3">Director - Operations</p>
+                        <p class="text-gray-400 text-sm">Strategic leader with 25+ years in supply chain management and operational excellence.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#1a1a1a] rounded-xl overflow-hidden border border-blue-600/30 hover:border-blue-600 transition">
+                    <div class="h-64 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-white/30"></i>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-white mb-2">Vikram Patel</h3>
+                        <p class="text-blue-400 font-semibold mb-3">Director - Finance</p>
+                        <p class="text-gray-400 text-sm">Financial expert with 20+ years experience in corporate finance and strategic planning.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#1a1a1a] rounded-xl overflow-hidden border border-blue-600/30 hover:border-blue-600 transition">
+                    <div class="h-64 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-white/30"></i>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-white mb-2">Anjali Desai</h3>
+                        <p class="text-blue-400 font-semibold mb-3">Director - Technology</p>
+                        <p class="text-gray-400 text-sm">Tech innovator driving digital transformation and technology initiatives at PPS.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#1a1a1a] rounded-xl overflow-hidden border border-blue-600/30 hover:border-blue-600 transition">
+                    <div class="h-64 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-white/30"></i>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-white mb-2">Arjun Singh</h3>
+                        <p class="text-blue-400 font-semibold mb-3">Director - HR & Admin</p>
+                        <p class="text-gray-400 text-sm">People management expert fostering a culture of excellence and employee development.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#1a1a1a] rounded-xl overflow-hidden border border-blue-600/30 hover:border-blue-600 transition">
+                    <div class="h-64 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-6xl text-white/30"></i>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-white mb-2">Meera Nair</h3>
+                        <p class="text-blue-400 font-semibold mb-3">Director - Customer Relations</p>
+                        <p class="text-gray-400 text-sm">Customer-centric leader ensuring exceptional service and long-term client partnerships.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="reveal py-20 px-4 bg-gradient-to-r from-blue-600 to-blue-800">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-black text-white mb-6">Ready to Partner With Us?</h2>
+            <p class="text-xl text-blue-100 mb-8">
+                Let's discuss how PPS Logistics can help optimize your supply chain and drive your business forward.
+            </p>
+            <a href="index.html#contact" class="bg-white text-blue-600 px-10 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all inline-block">
+                Get In Touch
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1a1a1a] py-16 px-4 border-t border-blue-900/30">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <h3 class="text-blue-500 font-bold text-lg mb-4">PPS Logistics</h3>
+                <p class="text-gray-400 text-sm">Your trusted partner in logistics excellence.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+                    <li><a href="index.html#services" class="hover:text-blue-400">Services</a></li>
+                    <li><a href="contact.html" class="hover:text-blue-400">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Contact Info</h4>
+                <p class="text-gray-400 text-sm">+91 999 000 1111</p>
+                <p class="text-gray-400 text-sm">info@ppslogistics.in</p>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto mt-8 pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
+            <p>&copy; 2024 PPS Logistics. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
