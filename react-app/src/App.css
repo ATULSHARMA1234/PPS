@@ -1,0 +1,182 @@
+:root {
+  --sunset-dark: #1a1a1a;
+  --sunset-blue: #3b82f6;
+  --sunset-darkblue: #1e40af;
+  --sunset-lightblue: #60a5fa;
+}
+
+.bg-transition {
+  transition: opacity 1.2s ease-in-out;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+.blur-overlay {
+  transition: backdrop-filter 0.8s ease, background-color 0.8s ease;
+}
+
+.scrolled .blur-overlay {
+  backdrop-filter: blur(12px);
+  background-color: rgba(26, 26, 26, 0.75);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-card {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.service-card:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.info-reveal {
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+.service-card:hover .info-reveal {
+  max-height: 250px;
+  opacity: 1;
+  margin-top: 1rem;
+}
+
+.event-card img {
+  transition: transform 0.6s ease;
+}
+
+.event-card:hover img {
+  transform: scale(1.1);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal[aria-hidden="false"] {
+  display: flex;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background: #121212;
+  padding: 2rem;
+  border-radius: 1rem;
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  border: 1px solid #3b82f6;
+  z-index: 10;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #3b82f6;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.modal h2 {
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.modal label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #60a5fa;
+  font-size: 0.875rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.modal input,
+.modal select,
+.modal textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 0.5rem;
+  background: #121212;
+  color: white;
+}
+
+.modal input:focus,
+.modal select:focus,
+.modal textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.modal button {
+  background: #3b82f6;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 100%;
+  font-weight: bold;
+}
+
+.modal button:hover {
+  background: #1e40af;
+}
+
+.hero-logo-zoom {
+  animation: heroLogoZoomFill 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes heroLogoZoomFill {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3.5);
+    opacity: 0;
+  }
+}
+
+.register-type-btn {
+  transition: all 0.3s ease;
+}
+
+.register-type-btn.active {
+  background-color: rgba(59, 130, 246, 0.2);
+  border-color: #3b82f6;
+}
