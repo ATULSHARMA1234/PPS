@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPS Logistics | Excellence in Motion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --sunset-dark: #1a1a1a;
+            --sunset-blue: #3b82f6;
+            --sunset-darkblue: #1e40af;
+            --sunset-lightblue: #60a5fa;
+        }
+
+        .bg-transition {
+            transition: opacity 1.2s ease-in-out;
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+        }
+
+        .blur-overlay { transition: backdrop-filter 0.8s ease, background-color 0.8s ease; }
+        .scrolled .blur-overlay { backdrop-filter: blur(12px); background-color: rgba(26, 26, 26, 0.75); }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .service-card { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden; }
+        .service-card:hover { transform: scale(1.05); z-index: 10; }
+        .info-reveal { max-height: 0; opacity: 0; transition: all 0.5s ease; overflow: hidden; }
+        .service-card:hover .info-reveal { max-height: 250px; opacity: 1; margin-top: 1rem; }
+        
+        .event-card img { transition: transform 0.6s ease; }
+        .event-card:hover img { transform: scale(1.1); }
+
+        /* Modal Styles */
+        .modal { display: none; position: fixed; inset: 0; z-index: 1000; justify-content: center; align-items: center; }
+        .modal[aria-hidden="false"] { display: flex; }
+        .modal-overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.7); }
+        .modal-content { background: #121212; padding: 2rem; border-radius: 1rem; position: relative; max-width: 500px; width: 100%; }
+        .modal-close { position: absolute; top: 1rem; right: 1rem; color: #3b82f6; font-size: 1.5rem; cursor: pointer; }
+        .modal h2 { margin-bottom: 1.5rem; }
+        .modal label { display: block; margin-bottom: 0.5rem; }
+        .modal input { width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #333; border-radius: 0.5rem; background: #1a1a1a; color: white; }
+        .modal button { background: #3b82f6; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 0.5rem; cursor: pointer; transition: background 0.3s; }
+        .modal button:hover { background: #1e40af; }
+
+        /* Hero Logo Animation */
+        .hero-logo-zoom {
+            animation: heroLogoZoomFill 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        @keyframes heroLogoZoomFill {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            70% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(3.5);
+                opacity: 0;
+            }
+        }
+
+        #heroTitle {
+            transform-origin: center center;
+        }
+
+        /* About Logo Zoom In */
+        #aboutLogo {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: all 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        #aboutLogo.zoom-in {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        #aboutLogo.move-up {
+            animation: moveUpSmooth 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        @keyframes smoothZoomIn {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes moveUpSmooth {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                transform: translate(-50%, calc(-50% - 80px)) scale(0.7);
+            }
+        }
+
+        /* Circular items fade in */
+        .info-item {
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .info-item.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="bg-[#121212] text-white overflow-x-hidden">
+
+    <div id="bg-cargo" class="bg-transition opacity-100">
+        <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover opacity-30" alt="Cargo background">
+    </div>
+    <div id="bg-employees" class="bg-transition opacity-0">
+        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover opacity-25" alt="Employees background">
+    </div>
+
+    <nav class="fixed top-0 right-0 z-50 p-6 flex items-center space-x-6 transition-all duration-500" id="mainNav">
+        <div class="hidden md:flex space-x-6 text-sm font-bold uppercase tracking-widest items-center">
+            <a href="#" class="text-blue-500 border-b-2 border-blue-500 pb-1">Home</a>
+            <a href="about.html" class="hover:text-blue-400">About</a>
+            <a href="services.html" class="hover:text-blue-400">Services</a>
+            <a href="#events" class="hover:text-blue-400">Events</a>
+            <a href="contact.html" class="hover:text-blue-400">Contact</a>
+            
+            <div class="flex items-center space-x-4 border-l pl-6 border-white/20">
+                <a href="#" class="hover:text-blue-500 transition-colors" id="btn-login" data-open="login">Login</a>
+                <a href="#" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition-all shadow-lg active:scale-95" id="btn-signup" data-open="signup">Create Account</a>
+            </div>
+        </div>
+        
+        <div class="flex space-x-4 text-lg border-l pl-6 border-white/20">
+            <a href="#" class="hover:text-blue-500"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="hover:text-blue-500"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </nav>
+
+    <section class="relative h-screen flex items-center justify-center">
+        <div id="heroOverlay" class="absolute inset-0 z-10 blur-overlay flex items-center justify-center">
+            <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center max-w-5xl px-4 w-full">
+                <h1 id="heroTitle" class="text-7xl md:text-9xl font-black mb-4 tracking-tighter text-white drop-shadow-2xl" style="transform-origin: center center;">
+                    PPS <span class="text-blue-600">Logistics</span>
+                </h1>
+                <p id="heroSubtitle" class="text-xl md:text-2xl font-medium mb-10 text-blue-100/80 italic">
+                    Fast. Reliable. Fiery. Redefining Indian Supply Chains.
+                </p>
+                <a href="#about" id="getStartedBtn" class="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-12 py-5 rounded-full font-bold text-lg hover:from-blue-500 hover:to-blue-700 transition-all shadow-xl inline-block">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="reveal min-h-screen py-32 px-4 bg-[#121212]/90 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div>
+                    <span class="text-blue-500 font-bold text-sm uppercase tracking-widest">Prakash Parcel Services Limited</span>
+                    <h2 class="text-5xl md:text-6xl font-black text-white mb-6 mt-4 uppercase tracking-tighter">
+                        Your Preferred Logistics <span class="text-blue-600">Partner!</span>
+                    </h2>
+                    
+                    <p class="text-gray-300 text-base leading-relaxed mb-6">
+                        Prakash Parcel Services Limited started in 1992, was the parcel division of the erstwhile Prakash Group, one of India's few transport companies started in the 1960s. Over the years, PPS has transformed into a renowned logistics service provider working with several corporate houses, MNCs, MSMEs & PSUs supporting their physical distribution across India. We at PPS believe that we are partners in the growth of our customers.
+                    </p>
+                    
+                    <p class="text-gray-300 text-base leading-relaxed mb-6">
+                        Our Management has over 5 decades of industry knowledge and our operations team comprises well experienced members, thus we assure best services to our customers. Our emphasis on quality & technology helps maintain repeatability in our services.
+                    </p>
+                    
+                    <p class="text-gray-300 text-base leading-relaxed mb-8">
+                        Our network is spread across 19 states covering all major cities & industrial towns.
+                    </p>
+                    
+                    <a href="about.html" class="bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 rounded-lg font-bold uppercase tracking-widest transition-all inline-block">
+                        More Info
+                    </a>
+                </div>
+                
+                <!-- Right Images -->
+                <div class="relative h-full min-h-[500px]">
+                    <div class="absolute inset-0">
+                        <!-- Large truck image (top right) -->
+                        <div class="absolute top-0 right-0 w-2/3 h-2/5 rounded-lg overflow-hidden border-4 border-blue-600 shadow-lg">
+                            <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" alt="Logistics truck">
+                        </div>
+                        
+                        <!-- Road truck image (bottom left) -->
+                        <div class="absolute bottom-0 left-0 w-3/5 h-2/5 rounded-lg overflow-hidden shadow-lg">
+                            <img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" alt="Delivery truck on road">
+                        </div>
+                        
+                        <!-- Experience badge (bottom right) -->
+                        <div class="absolute bottom-6 right-6 bg-blue-600 rounded-lg p-6 text-center shadow-xl">
+                            <div class="text-4xl font-black text-white">50+</div>
+                            <div class="text-sm font-bold text-blue-100 mt-2">Years of Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="reveal py-32 px-4 max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+            <h2 class="text-5xl font-bold text-blue-500 uppercase tracking-tighter">Our Expertise</h2>
+            <div class="h-1 w-24 bg-blue-600 mx-auto mt-4"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="service-card group bg-[#1a1a1a] rounded-3xl border border-white/10 hover:border-blue-500/50">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=800&q=80" alt="FTL" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-8 text-center">
+                    <h3 class="text-2xl font-bold text-blue-400">Full Truck Load (FTL)</h3>
+                    <div class="info-reveal">
+                        <p class="text-sm text-gray-300 mb-6">Exclusive use of a truck for your goods, ensuring direct routes and zero transshipment.</p>
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold">Book Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="service-card group bg-[#1a1a1a] rounded-3xl border border-white/10 hover:border-blue-500/50">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=800&q=80" alt="PTL" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-8 text-center">
+                    <h3 class="text-2xl font-bold text-blue-400">Partial Truck Load (PTL)</h3>
+                    <div class="info-reveal">
+                        <p class="text-sm text-gray-300 mb-6">Optimized cargo sharing that saves you money while maintaining delivery speed.</p>
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold">Book Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="service-card group bg-[#1a1a1a] rounded-3xl border border-white/10 hover:border-blue-500/50">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Warehousing" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-8 text-center">
+                    <h3 class="text-2xl font-bold text-blue-400">Warehousing</h3>
+                    <div class="info-reveal">
+                        <p class="text-sm text-gray-300 mb-6">Secured hubs with real-time stock updates and climate-controlled options.</p>
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="events" class="reveal py-32 bg-[#1a1a1a]/50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold text-blue-500 uppercase tracking-tighter">Life at PPS</h2>
+                <div class="h-1 w-24 bg-blue-600 mx-auto mt-4"></div>
+            </div>
+
+            <div class="space-y-12">
+                <article class="rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 overflow-hidden flex flex-col md:flex-row items-center gap-0">
+                    <div class="md:w-1/2 overflow-hidden rounded-t-3xl md:rounded-t-none md:rounded-l-3xl">
+                        <img src="https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=1200&q=80" class="w-full h-auto object-contain" alt="Awards event">
+                    </div>
+                    <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                        <span class="text-blue-500 font-bold text-xs uppercase tracking-widest">Awards 2025</span>
+                        <h4 class="text-2xl md:text-3xl font-bold mt-4 text-blue-400">Best Employee of the Year</h4>
+                        <p class="text-gray-400 mt-6 text-sm md:text-base leading-relaxed">Honoring our top-performing fleet managers with celebrations and recognition programs that highlight excellence in operations and customer service.</p>
+                    </div>
+                </article>
+
+                <article class="rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 overflow-hidden flex flex-col md:flex-row-reverse items-center gap-0">
+                    <div class="md:w-1/2 overflow-hidden rounded-t-3xl md:rounded-t-none md:rounded-r-3xl">
+                        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80" class="w-full h-auto object-contain" alt="ISO certification">
+                    </div>
+                    <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                        <span class="text-blue-500 font-bold text-xs uppercase tracking-widest">Milestone</span>
+                        <h4 class="text-2xl md:text-3xl font-bold mt-4 text-blue-400">ISO Re-certified</h4>
+                        <p class="text-gray-400 mt-6 text-sm md:text-base leading-relaxed">Maintaining global standards in logistics operations, reinforcing trust with our partners and clients through rigorous quality checks and continuous improvement.</p>
+                    </div>
+                </article>
+
+                <article class="rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 overflow-hidden flex flex-col md:flex-row items-center gap-0">
+                    <div class="md:w-1/2 overflow-hidden rounded-t-3xl md:rounded-t-none md:rounded-l-3xl">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80" class="w-full h-auto object-contain" alt="Team meetup">
+                    </div>
+                    <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                        <span class="text-blue-500 font-bold text-xs uppercase tracking-widest">Culture</span>
+                        <h4 class="text-2xl md:text-3xl font-bold mt-4 text-blue-400">PPS National Meetup</h4>
+                        <p class="text-gray-400 mt-6 text-sm md:text-base leading-relaxed">Celebrating achievements, building team cohesion and sharing best practices across departments—our annual meetup brings everyone together.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="reveal bg-[#1a1a1a] py-24 px-4 border-t border-blue-900/30">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20">
+            <div>
+                <h2 class="text-5xl font-black text-blue-500 mb-8 uppercase tracking-tighter">Get In Touch</h2>
+                <div class="space-y-8 text-gray-300">
+                    <div class="flex items-start gap-4">
+                        <i class="fas fa-location-dot text-blue-600 text-xl mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-blue-400 uppercase tracking-widest text-sm">Headquarters</h4>
+                            <p>PPS Logistics Hub, Plot No. 42-A, Industrial Estate,<br>Phase III, New Delhi - 110020, India</p>
+                        </div>
+                    </div>
+                    <p><i class="fas fa-phone mr-3 text-blue-600"></i> +91 999 000 1111</p>
+                    <p><i class="fas fa-envelope mr-3 text-blue-600"></i> info@ppslogistics.in</p>
+                </div>
+            </div>
+            <div class="flex flex-col items-center justify-center">
+                <a href="contact.html" class="bg-blue-600 hover:bg-blue-500 text-white px-12 py-5 rounded-lg font-bold text-lg uppercase tracking-widest transition-all inline-block">
+                    Contact Us
+                </a>
+                <p class="text-gray-400 text-sm mt-6 text-center">Click to fill out our contact form and we'll get back to you shortly</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="modal-login" aria-hidden="true">
+        <div class="modal-overlay" data-close></div>
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="login-title">
+            <button class="modal-close" data-close>&times;</button>
+            <h2 id="login-title">Login</h2>
+            <form id="form-login">
+                <label>Email
+                    <input type="email" name="email" required />
+                </label>
+                <label>Password
+                    <input type="password" name="password" required />
+                </label>
+                <button type="submit">Sign in</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="modal-signup" aria-hidden="true">
+        <div class="modal-overlay" data-close></div>
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="signup-title">
+            <button class="modal-close" data-close>&times;</button>
+            <h2 id="signup-title">Create Account</h2>
+            
+            <!-- Registration Type Selection -->
+            <div id="registrationType" class="space-y-4 mb-6">
+                <p class="text-gray-400 text-sm mb-4">Select your registration type:</p>
+                <div class="flex gap-4">
+                    <button type="button" class="flex-1 py-3 px-4 rounded-lg border-2 border-blue-600 bg-blue-600/20 text-white font-bold transition-all register-type-btn active" data-type="user">
+                        <i class="fas fa-user mr-2"></i>User
+                    </button>
+                    <button type="button" class="flex-1 py-3 px-4 rounded-lg border-2 border-gray-600 bg-transparent text-white font-bold transition-all register-type-btn" data-type="partner">
+                        <i class="fas fa-truck mr-2"></i>Delivery Partner
+                    </button>
+                </div>
+            </div>
+
+            <!-- User Registration Form -->
+            <form id="form-signup-user" class="signup-form space-y-4">
+                <label>Full name
+                    <input type="text" name="name" required class="w-full p-3 bg-[#121212] border border-blue-600/30 rounded-lg text-white mt-1" />
+                </label>
+                <label>Email
+                    <input type="email" name="email" required class="w-full p-3 bg-[#121212] border border-blue-600/30 rounded-lg text-white mt-1" />
+                </label>
+                <label>Password
+                    <input type="password" name="password" required minlength="8" class="w-full p-3 bg-[#121212] border border-blue-600/30 rounded-lg text-white mt-1" placeholder="Min 8 characters with uppercase, number & special char" />
+                </label>
+                <label>Confirm password
+                    <input type="password" name="confirm" required minlength="8" class="w-full p-3 bg-[#121212] border border-blue-600/30 rounded-lg text-white mt-1" />
+                </label>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-lg font-bold transition-all">Create account</button>
+            </form>
+
+            <!-- Delivery Partner Registration Form -->
+            <form id="form-signup-partner" class="signup-form space-y-4 hidden">
+                <label>Full name
+                    <input type="text" name="name" required class="w-full p-3 bg-[#121212] border border-blue-600/30 rounded-lg text-white mt-1" />
+                </label>
+                <label>Mobile Number
+                    <input type="tel" name="phone" required pattern="[0-9]{10}" class="w-full p-3 bg-[#121212] border border-blue-600/30 rounded-lg text-white mt-1" placeholder="10-digit mobile number" />
+                </label>
+                <label>Email ID
+                    <input type="email" name="email" required class="w-full p-3 bg-[#121212] border border-blue-600/30 rounded-lg text-white mt-1" />
+                </label>
+                <label>Password
+                    <input type="password" name="password" required minlength="8" class="w-full p-3 bg-[#121212] border border-blue-600/30 rounded-lg text-white mt-1" placeholder="Min 8 characters with uppercase, number & special char" />
+                </label>
+                <label>Confirm password
+                    <input type="password" name="confirm" required minlength="8" class="w-full p-3 bg-[#121212] border border-blue-600/30 rounded-lg text-white mt-1" />
+                </label>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-lg font-bold transition-all">Register as Partner</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ...existing code... -->
+
+    <script>
+        // Scroll effects for nav and background
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('mainNav');
+            const bgCargo = document.getElementById('bg-cargo');
+            const bgEmployees = document.getElementById('bg-employees');
+            const scrollPos = window.scrollY;
+
+            if (scrollPos > 300) {
+                bgCargo.style.opacity = '0';
+                bgEmployees.style.opacity = '1';
+                nav.classList.add('bg-[#1a1a1a]/95', 'backdrop-blur-md', 'py-4', 'shadow-2xl');
+            } else {
+                bgCargo.style.opacity = '1';
+                bgEmployees.style.opacity = '0';
+                nav.classList.remove('bg-[#1a1a1a]/95', 'backdrop-blur-md', 'py-4', 'shadow-2xl');
+            }
+
+            if (scrollPos > 50) {
+                document.body.classList.add('scrolled');
+            } else {
+                document.body.classList.remove('scrolled');
+            }
+        });
+
+        // Reveal sections on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Get Started Animation Sequence
+        const getStartedBtn = document.getElementById('getStartedBtn');
+        const heroTitle = document.getElementById('heroTitle');
+        const heroSubtitle = document.getElementById('heroSubtitle');
+        const aboutLogo = document.getElementById('aboutLogo');
+        const aboutText = document.getElementById('aboutText');
+        const circularInfo = document.getElementById('circularInfo');
+        const infoItems = document.querySelectorAll('.info-item');
+
+        let animationTriggered = false;
+
+        getStartedBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Modal functionality
+        const modalLogin = document.getElementById('modal-login');
+        const modalSignup = document.getElementById('modal-signup');
+        const modalTrack = document.getElementById('modal-track');
+        const btnLogin = document.getElementById('btn-login');
+        const btnSignup = document.getElementById('btn-signup');
+        const btnTrack = document.getElementById('btn-track');
+        const closeModal = document.querySelectorAll('[data-close]');
+
+        btnLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            modalLogin.setAttribute('aria-hidden', 'false');
+        });
+
+        btnSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            modalSignup.setAttribute('aria-hidden', 'false');
+        });
+
+        btnTrack.addEventListener('click', (e) => {
+            e.preventDefault();
+            modalTrack.setAttribute('aria-hidden', 'false');
+        });
+
+        closeModal.forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.modal').forEach(m => m.setAttribute('aria-hidden', 'true'));
+            });
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-overlay')) {
+                document.querySelectorAll('.modal').forEach(m => m.setAttribute('aria-hidden', 'true'));
+            }
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(m => m.setAttribute('aria-hidden', 'true'));
+            }
+        });
+
+        // Form handlers
+        document.getElementById('form-login').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Login form submitted!');
+            modalLogin.setAttribute('aria-hidden', 'true');
+        });
+
+        document.getElementById('form-signup-user').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = Object.fromEntries(new FormData(e.target));
+            
+            if (data.password !== data.confirm) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            if (!/(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/.test(data.password)) {
+                alert('Password must contain uppercase letter, number and special character!');
+                return;
+            }
+            
+            alert('User account created successfully!');
+            modalSignup.setAttribute('aria-hidden', 'true');
+            document.getElementById('form-signup-user').reset();
+        });
+
+        document.getElementById('form-signup-partner').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = Object.fromEntries(new FormData(e.target));
+            
+            if (data.phone.length !== 10) {
+                alert('Please enter a valid 10-digit mobile number!');
+                return;
+            }
+            
+            if (data.password !== data.confirm) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            if (!/(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/.test(data.password)) {
+                alert('Password must contain uppercase letter, number and special character!');
+                return;
+            }
+            
+            alert('Delivery partner registration submitted successfully!');
+            modalSignup.setAttribute('aria-hidden', 'true');
+            document.getElementById('form-signup-partner').reset();
+        });
+
+        document.getElementById('form-track').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = Object.fromEntries(new FormData(e.target));
+            alert('Tracking: ' + (data.tracking || ''));
+            modalTrack.setAttribute('aria-hidden', 'true');
+        });
+
+        // Registration type switching
+        const registrationTypeBtns = document.querySelectorAll('.register-type-btn');
+        const signupForms = document.querySelectorAll('.signup-form');
+
+        registrationTypeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                registrationTypeBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-blue-600/20', 'border-blue-600');
+                    b.classList.add('bg-transparent', 'border-gray-600');
+                });
+                
+                btn.classList.add('active', 'bg-blue-600/20', 'border-blue-600');
+                btn.classList.remove('bg-transparent', 'border-gray-600');
+                
+                const type = btn.dataset.type;
+                signupForms.forEach(form => {
+                    if (form.id === `form-signup-${type}`) {
+                        form.classList.remove('hidden');
+                    } else {
+                        form.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
