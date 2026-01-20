@@ -56,17 +56,17 @@ export default function Services() {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="relative h-96 flex items-center justify-center">
+      <section className="relative h-96 flex items-center justify-center bg-gray-50">
         <div className="text-center max-w-4xl px-4">
-          <h1 className="text-6xl md:text-7xl font-black text-white mb-4">Our Services</h1>
-          <p className="text-xl text-blue-300">Comprehensive Logistics Solutions for Your Business</p>
+          <h1 className="text-6xl md:text-7xl font-black text-gray-900 mb-4">Our Services</h1>
+          <p className="text-xl text-blue-700">Comprehensive Logistics Solutions for Your Business</p>
         </div>
       </section>
 
       {/* Services Overview */}
       <RevealSection className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <p className="text-center text-gray-300 text-lg mb-16 max-w-3xl mx-auto">
+          <p className="text-center text-gray-700 text-lg mb-16 max-w-3xl mx-auto">
             PPS Logistics offers a wide range of logistics and supply chain solutions tailored to meet the unique needs of businesses across industries.
           </p>
         </div>
@@ -74,7 +74,7 @@ export default function Services() {
 
       {/* Services Details */}
       {services.map((service, idx) => (
-        <RevealSection key={idx} className={`py-20 px-4 ${idx % 2 === 0 ? 'bg-[#1a1a1a]/50' : ''}`}>
+        <RevealSection key={idx} className={`py-20 px-4 ${idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
           <div className="max-w-6xl mx-auto">
             <div className={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center ${service.reverse ? 'md:grid-cols-2' : ''}`}>
               <div className={service.reverse ? 'order-2 md:order-1' : ''}>
@@ -83,15 +83,15 @@ export default function Services() {
                 </div>
               </div>
               <div className={service.reverse ? 'order-1 md:order-2' : ''}>
-                <h2 className="text-5xl font-black text-white mb-6">{service.title}</h2>
-                <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                <h2 className="text-5xl font-black text-gray-900 mb-6">{service.title}</h2>
+                <p className="text-gray-700 text-lg leading-relaxed mb-6">
                   {service.desc}
                 </p>
                 <ul className="space-y-4 mb-8">
                   {service.features.map((feature, fIdx) => (
                     <li key={fIdx} className="flex gap-3">
-                      <i className="fas fa-check text-blue-500 mt-1"></i>
-                      <span className="text-gray-300">{feature}</span>
+                      <i className="fas fa-check text-blue-600 mt-1"></i>
+                      <span className="text-gray-700">{feature}</span>
                     </li>
                   ))}
                 </ul>

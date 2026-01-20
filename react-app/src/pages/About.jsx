@@ -34,26 +34,26 @@ export default function About() {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="relative h-96 flex items-center justify-center">
+      <section className="relative h-96 flex items-center justify-center bg-gray-50">
         <div className="text-center max-w-4xl px-4">
-          <h1 className="text-6xl md:text-7xl font-black text-white mb-4">About PPS Logistics</h1>
-          <p className="text-xl text-blue-300">Your Trusted Partner in Logistics Excellence</p>
+          <h1 className="text-6xl md:text-7xl font-black text-gray-900 mb-4">About PPS Logistics</h1>
+          <p className="text-xl text-blue-700">Your Trusted Partner in Logistics Excellence</p>
         </div>
       </section>
 
       {/* Company History */}
-      <RevealSection className="py-20 px-4 bg-[#121212]/90">
+      <RevealSection className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
             <div>
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-6">Our History</h2>
-              <p className="text-gray-300 text-lg leading-relaxed mb-4">
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">Our History</h2>
+              <p className="text-gray-700 text-lg leading-relaxed mb-4">
                 Prakash Parcel Services Limited started in 1992 as the parcel division of the erstwhile Prakash Group, one of India's few transport companies started in the 1960s.
               </p>
-              <p className="text-gray-300 text-lg leading-relaxed mb-4">
+              <p className="text-gray-700 text-lg leading-relaxed mb-4">
                 Over the decades, we have evolved and transformed into a renowned logistics service provider working with several corporate houses, MNCs, MSMEs & PSUs supporting their physical distribution across India.
               </p>
-              <p className="text-gray-300 text-lg leading-relaxed">
+              <p className="text-gray-700 text-lg leading-relaxed">
                 We believe that we are partners in the growth of our customers, and this philosophy guides every decision we make.
               </p>
             </div>
@@ -65,19 +65,19 @@ export default function About() {
       </RevealSection>
 
       {/* Mission & Vision */}
-      <RevealSection className="py-20 px-4">
+      <RevealSection className="py-20 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-black text-center text-white mb-16">Mission & Vision</h2>
+          <h2 className="text-4xl font-black text-center text-gray-900 mb-16">Mission & Vision</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="bg-[#1a1a1a] rounded-2xl p-8 border-l-4 border-blue-600">
-              <h3 className="text-3xl font-bold text-blue-400 mb-4">Our Mission</h3>
-              <p className="text-gray-300 text-lg leading-relaxed">
+            <div className="bg-white rounded-2xl p-8 border-l-4 border-blue-600 shadow-md">
+              <h3 className="text-3xl font-bold text-blue-700 mb-4">Our Mission</h3>
+              <p className="text-gray-700 text-lg leading-relaxed">
                 To provide innovative, reliable, and sustainable logistics solutions that empower businesses to reach their markets efficiently while maintaining the highest standards of service quality and customer satisfaction.
               </p>
             </div>
-            <div className="bg-[#1a1a1a] rounded-2xl p-8 border-l-4 border-blue-400">
-              <h3 className="text-3xl font-bold text-blue-300 mb-4">Our Vision</h3>
-              <p className="text-gray-300 text-lg leading-relaxed">
+            <div className="bg-white rounded-2xl p-8 border-l-4 border-blue-500 shadow-md">
+              <h3 className="text-3xl font-bold text-blue-700 mb-4">Our Vision</h3>
+              <p className="text-gray-700 text-lg leading-relaxed">
                 To become India's most trusted logistics partner, recognized for operational excellence, technological innovation, and unwavering commitment to customer success across all segments of the supply chain industry.
               </p>
             </div>

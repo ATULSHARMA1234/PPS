@@ -76,31 +76,31 @@ export default function Contact() {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="relative h-96 flex items-center justify-center pt-20">
+      <section className="relative h-96 flex items-center justify-center bg-gray-50">
         <div className="text-center max-w-4xl px-4">
-          <h1 className="text-6xl md:text-7xl font-black text-white mb-4">Get In Touch</h1>
-          <p className="text-xl text-blue-300">We'd love to hear from you. Let's discuss your logistics needs.</p>
+          <h1 className="text-6xl md:text-7xl font-black text-gray-900 mb-4">Get In Touch</h1>
+          <p className="text-xl text-blue-700">We'd love to hear from you. Let's discuss your logistics needs.</p>
         </div>
       </section>
 
       {/* Contact Section */}
-      <RevealSection className="py-20 px-4">
+      <RevealSection className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div>
-              <h2 className="text-4xl font-black text-white mb-8">Contact Information</h2>
+              <h2 className="text-4xl font-black text-gray-900 mb-8">Contact Information</h2>
               
               <div className="space-y-8">
                 {contactInfo.map((info, idx) => (
                   <div key={idx} className="flex gap-4">
-                    <div className="text-blue-500 text-2xl flex-shrink-0 mt-2">
+                    <div className="text-blue-600 text-2xl flex-shrink-0 mt-2">
                       <i className={`fas ${info.icon}`}></i>
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-2">{info.title}</h3>
-                      <p className="text-gray-400">{info.content}</p>
-                      {info.subContent && <p className="text-gray-400">{info.subContent}</p>}
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">{info.title}</h3>
+                      <p className="text-gray-700">{info.content}</p>
+                      {info.subContent && <p className="text-gray-700">{info.subContent}</p>}
                     </div>
                   </div>
                 ))}
@@ -108,32 +108,32 @@ export default function Contact() {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-[#1a1a1a] rounded-2xl p-8 border border-blue-600/30">
-              <h2 className="text-4xl font-black text-white mb-8">Send us a Message</h2>
+            <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200 shadow-md">
+              <h2 className="text-4xl font-black text-gray-900 mb-8">Send us a Message</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-sm font-bold uppercase tracking-widest text-blue-400 mb-2">Full Name</label>
-                  <input type="text" name="name" value={formData.name} onChange={handleChange} required disabled={isSubmitting} className="w-full p-4 bg-[#121212] border border-blue-600/30 rounded-lg focus:border-blue-500 outline-none text-white disabled:opacity-50" placeholder="Your Name" />
+                  <label className="block text-sm font-bold uppercase tracking-widest text-blue-700 mb-2">Full Name</label>
+                  <input type="text" name="name" value={formData.name} onChange={handleChange} required disabled={isSubmitting} className="w-full p-4 bg-white border border-gray-300 rounded-lg focus:border-blue-500 outline-none text-gray-900 disabled:opacity-50" placeholder="Your Name" />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold uppercase tracking-widest text-blue-400 mb-2">Email Address</label>
-                  <input type="email" name="email" value={formData.email} onChange={handleChange} required disabled={isSubmitting} className="w-full p-4 bg-[#121212] border border-blue-600/30 rounded-lg focus:border-blue-500 outline-none text-white disabled:opacity-50" placeholder="your@email.com" />
+                  <label className="block text-sm font-bold uppercase tracking-widest text-blue-700 mb-2">Email Address</label>
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} required disabled={isSubmitting} className="w-full p-4 bg-white border border-gray-300 rounded-lg focus:border-blue-500 outline-none text-gray-900 disabled:opacity-50" placeholder="your@email.com" />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold uppercase tracking-widest text-blue-400 mb-2">Phone Number</label>
-                  <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required disabled={isSubmitting} className="w-full p-4 bg-[#121212] border border-blue-600/30 rounded-lg focus:border-blue-500 outline-none text-white disabled:opacity-50" placeholder="+91 999 000 1111" />
+                  <label className="block text-sm font-bold uppercase tracking-widest text-blue-700 mb-2">Phone Number</label>
+                  <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required disabled={isSubmitting} className="w-full p-4 bg-white border border-gray-300 rounded-lg focus:border-blue-500 outline-none text-gray-900 disabled:opacity-50" placeholder="+91 999 000 1111" />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold uppercase tracking-widest text-blue-400 mb-2">Company Name</label>
-                  <input type="text" name="company" value={formData.company} onChange={handleChange} disabled={isSubmitting} className="w-full p-4 bg-[#121212] border border-blue-600/30 rounded-lg focus:border-blue-500 outline-none text-white disabled:opacity-50" placeholder="Your Company" />
+                  <label className="block text-sm font-bold uppercase tracking-widest text-blue-700 mb-2">Company Name</label>
+                  <input type="text" name="company" value={formData.company} onChange={handleChange} disabled={isSubmitting} className="w-full p-4 bg-white border border-gray-300 rounded-lg focus:border-blue-500 outline-none text-gray-900 disabled:opacity-50" placeholder="Your Company" />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold uppercase tracking-widest text-blue-400 mb-2">Service Type</label>
-                  <select name="service" value={formData.service} onChange={handleChange} required disabled={isSubmitting} className="w-full p-4 bg-[#121212] border border-blue-600/30 rounded-lg focus:border-blue-500 outline-none text-white disabled:opacity-50">
+                  <label className="block text-sm font-bold uppercase tracking-widest text-blue-700 mb-2">Service Type</label>
+                  <select name="service" value={formData.service} onChange={handleChange} required disabled={isSubmitting} className="w-full p-4 bg-white border border-gray-300 rounded-lg focus:border-blue-500 outline-none text-gray-900 disabled:opacity-50">
                     <option value="">Select a service</option>
                     <option value="ftl">Full Truck Load (FTL)</option>
                     <option value="ptl">Partial Truck Load (PTL)</option>
@@ -144,8 +144,8 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold uppercase tracking-widest text-blue-400 mb-2">Message</label>
-                  <textarea name="message" value={formData.message} onChange={handleChange} required rows="4" disabled={isSubmitting} className="w-full p-4 bg-[#121212] border border-blue-600/30 rounded-lg focus:border-blue-500 outline-none text-white disabled:opacity-50" placeholder="Tell us about your logistics needs..."></textarea>
+                  <label className="block text-sm font-bold uppercase tracking-widest text-blue-700 mb-2">Message</label>
+                  <textarea name="message" value={formData.message} onChange={handleChange} required rows="4" disabled={isSubmitting} className="w-full p-4 bg-white border border-gray-300 rounded-lg focus:border-blue-500 outline-none text-gray-900 disabled:opacity-50" placeholder="Tell us about your logistics needs..."></textarea>
                 </div>
 
                 <button type="submit" disabled={isSubmitting} className="w-full bg-blue-600 hover:bg-blue-500 text-white py-4 rounded-lg font-bold uppercase tracking-widest transition-all disabled:opacity-50 disabled:cursor-not-allowed">
@@ -160,13 +160,13 @@ export default function Contact() {
       {/* Thank You Message */}
       {showThankYou && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[999] flex items-center justify-center">
-          <div className="bg-[#1a1a1a] rounded-2xl p-12 text-center border-2 border-blue-600 max-w-md w-full mx-4">
+          <div className="bg-white rounded-2xl p-12 text-center border-2 border-blue-600 max-w-md w-full mx-4">
             <div className="text-6xl text-blue-500 mb-6">
               <i className="fas fa-check-circle"></i>
             </div>
-            <h2 className="text-4xl font-black text-white mb-4">Thank You!</h2>
-            <p className="text-xl text-gray-300 mb-8">We've received your message and will get back to you shortly with a customized logistics solution for your needs.</p>
-            <p className="text-gray-400 text-sm">Redirecting to homepage in <span className="font-bold">{countdown}</span> seconds...</p>
+            <h2 className="text-4xl font-black text-gray-900 mb-4">Thank You!</h2>
+            <p className="text-xl text-gray-700 mb-8">We've received your message and will get back to you shortly with a customized logistics solution for your needs.</p>
+            <p className="text-gray-600 text-sm">Redirecting to homepage in <span className="font-bold">{countdown}</span> seconds...</p>
           </div>
         </div>
       )}

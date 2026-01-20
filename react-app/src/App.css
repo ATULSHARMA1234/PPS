@@ -1,8 +1,13 @@
 :root {
-  --sunset-dark: #1a1a1a;
+  --sunset-dark: #f5f5f5;
   --sunset-blue: #3b82f6;
   --sunset-darkblue: #1e40af;
   --sunset-lightblue: #60a5fa;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-timeline: view();
 }
 
 .bg-transition {
@@ -18,7 +23,7 @@
 
 .scrolled .blur-overlay {
   backdrop-filter: blur(12px);
-  background-color: rgba(26, 26, 26, 0.75);
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 .reveal {
@@ -79,11 +84,11 @@
 .modal-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
-  background: #121212;
+  background: #ffffff;
   padding: 2rem;
   border-radius: 1rem;
   position: relative;
@@ -91,6 +96,7 @@
   width: 100%;
   border: 1px solid #3b82f6;
   z-index: 10;
+  color: #1a1a1a;
 }
 
 .modal-close {
@@ -106,13 +112,13 @@
 
 .modal h2 {
   margin-bottom: 1.5rem;
-  color: white;
+  color: #1a1a1a;
 }
 
 .modal label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #60a5fa;
+  color: #3b82f6;
   font-size: 0.875rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -127,8 +133,8 @@
   margin-bottom: 1rem;
   border: 1px solid rgba(59, 130, 246, 0.3);
   border-radius: 0.5rem;
-  background: #121212;
-  color: white;
+  background: #f5f5f5;
+  color: #1a1a1a;
 }
 
 .modal input:focus,
@@ -136,6 +142,7 @@
 .modal textarea:focus {
   outline: none;
   border-color: #3b82f6;
+  background: #ffffff;
 }
 
 .modal button {

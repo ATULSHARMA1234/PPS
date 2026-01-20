@@ -4,24 +4,25 @@ export default function RevealSection({ children, className = '' }) {
   const ref = useRef(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active')
-          }
-        })
-      },
-      { threshold: 0.15 }
-    )
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active')
+        }
+      })
+    }, { threshold: 0.1 })
 
-    if (ref.current) observer.observe(ref.current)
+    if (ref.current) {
+      ref.current.classList.add('reveal')
+      observer.observe(ref.current)
+    }
+
     return () => observer.disconnect()
   }, [])
 
   return (
-    <div ref={ref} className={`reveal ${className}`}>
+    <section ref={ref} className={className}>
       {children}
-    </div>
+    </section>
   )
 }
