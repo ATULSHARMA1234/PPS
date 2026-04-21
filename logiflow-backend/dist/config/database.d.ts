@@ -1,0 +1,12 @@
+export declare class DatabaseConnection {
+    private static instance;
+    private isConnected;
+    private constructor();
+    static getInstance(): DatabaseConnection;
+    connect(): Promise<void>;
+    disconnect(): Promise<void>;
+    getConnectionStatus(): boolean;
+    healthCheck(): Promise<boolean>;
+}
+export declare const database: DatabaseConnection;
+//# sourceMappingURL=database.d.ts.map

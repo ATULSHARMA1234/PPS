@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocean Freight | LogiFlow</title>
+    <meta name="description" content="Sustainable, global shipping networks connecting major ports with reliable and predictable schedules.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0F172A',
+                        electric: '#2563EB',
+                        glass: 'rgba(15, 23, 42, 0.7)'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-overlay {
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.4));
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-slate-800 bg-white">
+
+    <!-- Navigation -->
+    <header id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 h-20 bg-navy/90 backdrop-blur-md shadow-lg">
+        <div class="container mx-auto px-6 h-full flex items-center justify-between">
+            <a href="index.html" class="text-3xl font-bold tracking-tighter text-white flex items-center gap-2">
+                <svg class="w-8 h-8 text-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                LogiFlow
+            </a>
+            <nav class="hidden md:flex flex-row space-x-8 items-center text-white font-medium">
+                <a href="index.html#services" class="hover:text-electric transition-colors">Services</a>
+                <a href="index.html#workflow" class="hover:text-electric transition-colors">How it Works</a>
+                <a href="index.html#contact" class="hover:text-electric transition-colors">Contact</a>
+                
+                <a href="index.html" class="text-white hover:text-electric font-semibold transition-all">Back to Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-[60vh] flex items-center justify-center pt-20">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1559132598-a3523f66ccea?q=80&w=2670&auto=format&fit=crop" class="w-full h-full object-cover" alt="Ocean Freight Container Ship">
+            <div class="absolute inset-0 bg-navy/80"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10 text-white text-center" data-aos="fade-up" data-aos-duration="1000">
+            <div class="inline-block px-4 py-2 bg-electric/20 border border-electric/50 rounded-full text-blue-300 font-semibold text-sm uppercase tracking-wide backdrop-blur-sm mb-6">
+                Global Network
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-4">
+                Ocean <span class="text-electric">Freight</span>
+            </h1>
+            <p class="text-xl text-slate-300 font-light max-w-2xl mx-auto leading-relaxed">
+                Connect your business to the world with our reliable, sustainable, and transparent ocean freight solutions.
+            </p>
+        </div>
+    </section>
+
+    <!-- Details Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl md:text-4xl font-bold text-navy mb-6">Sustainability Meets Efficiency</h2>
+                    <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                        Our ocean freight service provides businesses of all sizes access to top-tier global shipping lanes. With a focus on predictable schedules and minimized environmental impact, we're redefining maritime logistics.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-slate-700 font-medium">
+                            <svg class="w-6 h-6 text-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            FCL (Full Container Load) & LCL (Less than Container Load) options
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-700 font-medium">
+                            <svg class="w-6 h-6 text-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            End-to-end real-time shipment visibility
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-700 font-medium">
+                            <svg class="w-6 h-6 text-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Customs brokerage and compliance management
+                        </li>
+                    </ul>
+                    <div class="mt-8">
+                        <a href="index.html#contact" class="inline-block bg-electric hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold transition-all shadow-lg hover:scale-105">Request a Quote</a>
+                    </div>
+                </div>
+                <div data-aos="fade-left" class="relative rounded-3xl overflow-hidden shadow-2xl h-[400px]">
+                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=2670&auto=format&fit=crop" class="w-full h-full object-cover" alt="Port Operations">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy py-8 text-center text-slate-400 border-t border-slate-800">
+        <p>&copy; 2026 LogiFlow Inc. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 50, duration: 800 });
+    </script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard | LogiFlow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { navy: '#0F172A', electric: '#2563EB', }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+    </script>
+</head>
+<body class="font-sans antialiased bg-slate-50 text-slate-800 flex h-screen overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-slate-900 border-r border-slate-700 text-white flex flex-col transition-all">
+        <div class="h-20 flex items-center px-6 border-b border-slate-800">
+            <a href="index.html" class="text-2xl font-bold flex items-center gap-2">
+                <svg class="w-6 h-6 text-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                LogiFlow <span class="text-xs text-electric border border-electric rounded px-1 ml-1">MGR</span>
+            </a>
+        </div>
+        <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800 rounded-xl transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6z"></path></svg>
+                Dashboard
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-electric/20 text-electric rounded-xl transition-colors shadow">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                Fleet & Drivers
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800 rounded-xl transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                Hub Inventory
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800 rounded-xl transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Task Assignments
+            </a>
+        </nav>
+        <div class="p-4 border-t border-slate-800">
+            <div class="flex items-center gap-3 p-3 hover:bg-slate-800 rounded-xl cursor-pointer">
+                <img src="https://ui-avatars.com/api/?name=Hub+Manager&background=fff&color=0F172A" class="w-10 h-10 rounded-lg">
+                <div class="flex-1 overflow-hidden">
+                    <p class="text-sm font-semibold text-white truncate">Michael T.</p>
+                    <p class="text-xs text-slate-400 truncate">Mumbai Hub Manager</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden">
+        <!-- Header -->
+        <header class="h-20 bg-white border-b border-slate-200 flex items-center justify-between px-8">
+            <div class="flex items-center gap-3">
+                <h1 class="text-xl font-bold text-navy">Mumbai LogiHub</h1>
+                <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded border border-green-200">Online</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <form onsubmit="event.preventDefault(); window.showToast('Searching database for: ' + this.search.value + '...'); this.reset();">
+                    <input name="search" type="text" placeholder="Search waybill or ID..." class="px-4 py-2 border border-slate-300 rounded-xl bg-slate-50 focus:outline-none focus:ring-2 focus:ring-electric text-sm w-64">
+                </form>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="flex-1 overflow-y-auto p-8 bg-slate-50">
+            
+            <div class="flex justify-between items-end mb-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-navy">Active Fleet & Drivers</h2>
+                    <p class="text-slate-500 text-sm">Managing Local Mumbai Urban Routes</p>
+                </div>
+                <button onclick="deployNewVehicle()" class="bg-navy hover:bg-slate-800 text-white font-semibold py-2 px-6 rounded-xl transition-colors shadow">
+                    + Deploy New Vehicle
+                </button>
+            </div>
+
+            <!-- Drivers Table -->
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 text-slate-500 border-b border-slate-200 text-xs uppercase tracking-wider">
+                            <th class="p-4 font-semibold text-center w-16">Status</th>
+                            <th class="p-4 font-semibold">Driver Name</th>
+                            <th class="p-4 font-semibold">Vehicle Code</th>
+                            <th class="p-4 font-semibold">Current Active Route</th>
+                            <th class="p-4 font-semibold">Packages Left</th>
+                            <th class="p-4 font-semibold">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm divide-y divide-slate-100">
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 text-center">
+                                <span class="inline-block w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+                            </td>
+                            <td class="p-4 font-bold text-navy flex items-center gap-3">
+                                <img src="https://ui-avatars.com/api/?name=Sam+Fisher&background=random" class="w-8 h-8 rounded-full">
+                                Sam Fisher
+                            </td>
+                            <td class="p-4"><span class="font-mono text-xs bg-slate-100 text-slate-800 px-2 py-1 rounded">TRK-A12</span></td>
+                            <td class="p-4 text-slate-600">Andheri East Sector 4</td>
+                            <td class="p-4 font-bold text-slate-800">14 / 85</td>
+                            <td class="p-4"><a href="#" onclick="sendMessage(); return false;" class="text-electric hover:underline font-semibold">Message</a></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 text-center">
+                                <span class="inline-block w-3 h-3 bg-green-500 rounded-full shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+                            </td>
+                            <td class="p-4 font-bold text-navy flex items-center gap-3">
+                                <img src="https://ui-avatars.com/api/?name=Diana+Prince&background=random" class="w-8 h-8 rounded-full">
+                                Diana Prince
+                            </td>
+                            <td class="p-4"><span class="font-mono text-xs bg-slate-100 text-slate-800 px-2 py-1 rounded">VAN-B04</span></td>
+                            <td class="p-4 text-slate-600">Bandra West Sector 2</td>
+                            <td class="p-4 font-bold text-slate-800">42 / 60</td>
+                            <td class="p-4"><a href="#" onclick="sendMessage(); return false;" class="text-electric hover:underline font-semibold">Message</a></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 text-center">
+                                <span class="inline-block w-3 h-3 bg-amber-500 rounded-full"></span>
+                            </td>
+                            <td class="p-4 font-bold text-navy flex items-center gap-3">
+                                <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" class="w-8 h-8 rounded-full">
+                                John Doe
+                            </td>
+                            <td class="p-4"><span class="font-mono text-xs bg-slate-100 text-slate-800 px-2 py-1 rounded">TRK-A02</span></td>
+                            <td class="p-4 text-slate-600">Navi Mumbai West</td>
+                            <td class="p-4 font-bold text-amber-600">Delayed (traffic)</td>
+                            <td class="p-4"><a href="#" onclick="sendMessage(); return false;" class="text-electric hover:underline font-semibold">Message</a></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors opacity-70">
+                            <td class="p-4 text-center">
+                                <span class="inline-block w-3 h-3 bg-slate-300 rounded-full"></span>
+                            </td>
+                            <td class="p-4 font-bold text-navy flex items-center gap-3">
+                                <img src="https://ui-avatars.com/api/?name=Emily+Chen&background=random" class="w-8 h-8 rounded-full grayscale">
+                                Emily Chen
+                            </td>
+                            <td class="p-4"><span class="font-mono text-xs bg-slate-100 text-slate-800 px-2 py-1 rounded">DRN-X01</span></td>
+                            <td class="p-4 text-slate-600 italic">Off Duty</td>
+                            <td class="p-4 font-bold text-slate-500">-</td>
+                            <td class="p-4"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="px-6 py-4 border-t border-slate-200 bg-slate-50 text-center">
+                    <a href="#" onclick="window.showToast('Analytics processing. Check back later.'); return false;" class="text-slate-500 text-sm hover:text-navy font-semibold transition-colors">View All Fleet Activity</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // Global reusable Toast logic
+        window.showToast = function(message) {
+            let container = document.getElementById('toast-container');
+            if(!container) {
+                container = document.createElement('div');
+                container.id = 'toast-container';
+                container.className = 'fixed bottom-4 right-4 z-[9999] flex flex-col gap-2 pointer-events-none';
+                document.body.appendChild(container);
+            }
+            const toast = document.createElement('div');
+            toast.className = 'bg-electric text-white px-6 py-4 rounded-2xl shadow-[0_10px_30px_max(0,rgba(37,99,235,0.4))] transition-all duration-500 translate-y-10 opacity-0 font-semibold max-w-sm flex items-center gap-3 backdrop-blur pointer-events-auto';
+            toast.innerHTML = `<svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <div>${message}</div>`;
+            container.appendChild(toast);
+            
+            requestAnimationFrame(() => requestAnimationFrame(() => toast.classList.remove('translate-y-10', 'opacity-0')));
+
+            setTimeout(() => { 
+                toast.classList.add('translate-y-10', 'opacity-0'); 
+                setTimeout(() => toast.remove(), 500);
+            }, 3500);
+        };
+
+        function sendMessage() {
+            const msg = prompt("Enter a direct dispatch message for this driver:");
+            if (msg) window.showToast("Message securely sent to driver's terminal.");
+        }
+
+        function deployNewVehicle() {
+            const driverName = prompt("Enter assigned Driver's Name:");
+            if(!driverName) return;
+            const vehicleCode = prompt("Enter Vehicle Code (e.g. VAN-X01):", "VAN-");
+            
+            if (driverName && vehicleCode) {
+                const tbody = document.querySelector('tbody');
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-green-50 transition-colors bg-green-50/50';
+                row.innerHTML = `
+                    <td class="p-4 text-center">
+                        <span class="inline-block w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+                    </td>
+                    <td class="p-4 font-bold text-navy flex items-center gap-3">
+                        <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(driverName)}&background=random" class="w-8 h-8 rounded-full">
+                        ${driverName}
+                    </td>
+                    <td class="p-4"><span class="font-mono text-xs bg-electric text-white px-2 py-1 rounded shadow">${vehicleCode}</span></td>
+                    <td class="p-4 text-slate-600 font-bold">Deploying...</td>
+                    <td class="p-4 font-bold text-slate-800">0 / 0</td>
+                    <td class="p-4"><a href="#" onclick="sendMessage(); return false;" class="text-electric hover:underline font-semibold">Message</a></td>
+                `;
+                // Insert at top of table!
+                tbody.insertBefore(row, tbody.firstChild);
+                window.showToast(`${driverName} has been deployed into field operations.`);
+                
+                // Clear the highlight after a couple seconds
+                setTimeout(() => { row.classList.remove('bg-green-50/50', 'hover:bg-green-50'); row.classList.add('hover:bg-slate-50'); }, 2000);
+            }
+        }
+    </script>
+</body>
+</html>

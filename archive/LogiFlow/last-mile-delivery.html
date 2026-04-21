@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last-Mile Delivery | LogiFlow</title>
+    <meta name="description" content="Eco-friendly urban fleets providing swift, trackable, and safe deliveries directly to customers.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0F172A',
+                        electric: '#2563EB',
+                        glass: 'rgba(15, 23, 42, 0.7)'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-overlay {
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.4));
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-slate-800 bg-white">
+
+    <!-- Navigation -->
+    <header id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 h-20 bg-navy/90 backdrop-blur-md shadow-lg">
+        <div class="container mx-auto px-6 h-full flex items-center justify-between">
+            <a href="index.html" class="text-3xl font-bold tracking-tighter text-white flex items-center gap-2">
+                <svg class="w-8 h-8 text-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                LogiFlow
+            </a>
+            <nav class="hidden md:flex flex-row space-x-8 items-center text-white font-medium">
+                <a href="index.html#services" class="hover:text-electric transition-colors">Services</a>
+                <a href="index.html#workflow" class="hover:text-electric transition-colors">How it Works</a>
+                <a href="index.html#contact" class="hover:text-electric transition-colors">Contact</a>
+                
+                <a href="index.html" class="text-white hover:text-electric font-semibold transition-all">Back to Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-[60vh] flex items-center justify-center pt-20">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1617469767053-d3b523a0b982?q=80&w=2728&auto=format&fit=crop" class="w-full h-full object-cover" alt="Electric Delivery Van">
+            <div class="absolute inset-0 bg-navy/80"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10 text-white text-center" data-aos="fade-up" data-aos-duration="1000">
+            <div class="inline-block px-4 py-2 bg-electric/20 border border-electric/50 rounded-full text-blue-300 font-semibold text-sm uppercase tracking-wide backdrop-blur-sm mb-6">
+                Swift & Sustainable
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-4">
+                Last-Mile <span class="text-electric">Delivery</span>
+            </h1>
+            <p class="text-xl text-slate-300 font-light max-w-2xl mx-auto leading-relaxed">
+                The final lap matters the most. We deliver directly to your customers with precision, care, and speed.
+            </p>
+        </div>
+    </section>
+
+    <!-- Details Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl md:text-4xl font-bold text-navy mb-6">Completing the Supply Chain</h2>
+                    <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                        Our last-mile solutions are designed to enhance the end-customer experience. Utilizing an expanding fleet of electric transport vehicles, we promise carbon-neutral local deliveries right to the doorstep.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-slate-700 font-medium">
+                            <svg class="w-6 h-6 text-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                            Live tracking mapping for end-customers
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-700 font-medium">
+                            <svg class="w-6 h-6 text-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            Flexible delivery scheduling and routing
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-700 font-medium">
+                            <svg class="w-6 h-6 text-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Proof of delivery with digital signatures
+                        </li>
+                    </ul>
+                    <div class="mt-8">
+                        <a href="index.html#contact" class="inline-block bg-electric hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold transition-all shadow-lg hover:scale-105">View Local coverage</a>
+                    </div>
+                </div>
+                <div data-aos="fade-left" class="relative rounded-3xl overflow-hidden shadow-2xl h-[400px]">
+                    <img src="https://images.unsplash.com/photo-1542621323-2200234024b4?q=80&w=2670&auto=format&fit=crop" class="w-full h-full object-cover" alt="Delivery professional">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy py-8 text-center text-slate-400 border-t border-slate-800">
+        <p>&copy; 2026 LogiFlow Inc. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 50, duration: 800 });
+    </script>
+</body>
+</html>

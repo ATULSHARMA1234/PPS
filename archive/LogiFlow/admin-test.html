@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .nav { background: #1e293b; color: white; padding: 20px; width: 200px; }
+        .nav a { display: block; color: white; padding: 10px; text-decoration: none; margin: 5px 0; }
+        .nav a:hover { background: #2563eb; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <h3>Admin Navigation</h3>
+        <a href="overview.html">Overview</a>
+        <a href="personnel.html">Personnel</a>
+        <a href="revenue-hub.html">Revenue Hub</a>
+        <a href="global-fleet-map.html">Global Fleet Map</a>
+        <a href="index.html">Home</a>
+    </div>
+    
+    <div style="margin-left: 250px;">
+        <h1>Admin Portal Test</h1>
+        <p>Click the navigation links to test if they work.</p>
+        
+        <h2>Direct Tests:</h2>
+        <button onclick="window.location.href='overview.html'">Go to Overview</button>
+        <button onclick="console.log('clicked')">Test Console</button>
+        
+        <h2>URL Test:</h2>
+        <input type="text" id="urlTest" value="overview.html" style="width: 200px;">
+        <button onclick="window.location.href=document.getElementById('urlTest').value">Go</button>
+    </div>
+    
+    <script>
+        console.log('Admin test page loaded');
+        
+        // Check if navigation is blocked
+        document.addEventListener('click', function(e) {
+            console.log('Click detected:', e.target);
+        });
+    </script>
+</body>
+</html>

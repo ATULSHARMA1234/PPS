@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview | LogiFlow Dashboard</title>
+    <meta name="description" content="LogiFlow Overview Dashboard - Real-time logistics metrics and insights">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0F172A',
+                        electric: '#2563EB',
+                        glass: 'rgba(15, 23, 42, 0.7)'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased text-slate-800 bg-slate-50">
+
+    <!-- Navigation -->
+    <header id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 h-20 bg-white border-b border-slate-200">
+        <div class="container mx-auto px-6 h-full flex items-center justify-between">
+            <a href="index.html" class="text-3xl font-bold tracking-tighter text-navy flex items-center gap-2">
+                <svg class="w-8 h-8 text-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                LogiFlow
+            </a>
+            <nav class="hidden md:flex flex-row space-x-8 items-center text-navy font-medium">
+                <a href="overview.html" class="text-electric font-semibold">Overview</a>
+                <a href="personnel.html" class="hover:text-electric transition-colors">Personnel</a>
+                <a href="revenue-hub.html" class="hover:text-electric transition-colors">Revenue Hub</a>
+                <a href="global-fleet-map.html" class="hover:text-electric transition-colors">Global Fleet Map</a>
+                <a href="index.html" class="hover:text-electric transition-colors">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-12">
+        <div class="container mx-auto px-6">
+            <!-- Header -->
+            <div class="mb-8" data-aos="fade-down">
+                <h1 class="text-4xl font-bold text-navy mb-2">Overview Dashboard</h1>
+                <p class="text-slate-600 text-lg">Real-time logistics operations and performance metrics</p>
+            </div>
+
+            <!-- Key Metrics Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Active Shipments -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="0">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-blue-100 text-electric rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                            </svg>
+                        </div>
+                        <span class="text-xs font-medium text-green-600 bg-green-100 px-2 py-1 rounded-full">+12%</span>
+                    </div>
+                    <div class="text-3xl font-bold text-navy mb-1">1,247</div>
+                    <div class="text-sm text-slate-600">Active Shipments</div>
+                </div>
+
+                <!-- On-Time Delivery -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <span class="text-xs font-medium text-green-600 bg-green-100 px-2 py-1 rounded-full">+0.3%</span>
+                    </div>
+                    <div class="text-3xl font-bold text-navy mb-1">99.8%</div>
+                    <div class="text-sm text-slate-600">On-Time Delivery</div>
+                </div>
+
+                <!-- Revenue -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <span class="text-xs font-medium text-green-600 bg-green-100 px-2 py-1 rounded-full">+18%</span>
+                    </div>
+                    <div class="text-3xl font-bold text-navy mb-1">$2.4M</div>
+                    <div class="text-sm text-slate-600">Monthly Revenue</div>
+                </div>
+
+                <!-- Active Vehicles -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                        </div>
+                        <span class="text-xs font-medium text-red-600 bg-red-100 px-2 py-1 rounded-full">-3%</span>
+                    </div>
+                    <div class="text-3xl font-bold text-navy mb-1">847</div>
+                    <div class="text-sm text-slate-600">Active Vehicles</div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <!-- Delivery Performance Chart -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="text-xl font-bold text-navy mb-6">Delivery Performance</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-slate-600">Ocean Freight</span>
+                            <div class="flex items-center gap-2">
+                                <div class="w-32 bg-slate-200 rounded-full h-2">
+                                    <div class="bg-electric h-2 rounded-full" style="width: 92%"></div>
+                                </div>
+                                <span class="text-sm font-semibold text-navy">92%</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-slate-600">Air Freight</span>
+                            <div class="flex items-center gap-2">
+                                <div class="w-32 bg-slate-200 rounded-full h-2">
+                                    <div class="bg-electric h-2 rounded-full" style="width: 88%"></div>
+                                </div>
+                                <span class="text-sm font-semibold text-navy">88%</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-slate-600">Ground Transport</span>
+                            <div class="flex items-center gap-2">
+                                <div class="w-32 bg-slate-200 rounded-full h-2">
+                                    <div class="bg-electric h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                                <span class="text-sm font-semibold text-navy">95%</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-slate-600">Last Mile</span>
+                            <div class="flex items-center gap-2">
+                                <div class="w-32 bg-slate-200 rounded-full h-2">
+                                    <div class="bg-electric h-2 rounded-full" style="width: 98%"></div>
+                                </div>
+                                <span class="text-sm font-semibold text-navy">98%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200" data-aos="fade-up" data-aos-delay="500">
+                    <h3 class="text-xl font-bold text-navy mb-6">Recent Activity</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 p-3 bg-slate-50 rounded-xl">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <div class="flex-1">
+                                <div class="font-medium text-navy">Shipment #2847 Delivered</div>
+                                <div class="text-sm text-slate-600">Mumbai to Delhi - 2 hours ago</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-3 bg-slate-50 rounded-xl">
+                            <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                            <div class="flex-1">
+                                <div class="font-medium text-navy">New Route Optimized</div>
+                                <div class="text-sm text-slate-600">Bangalore route - 15% fuel savings - 3 hours ago</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-3 bg-slate-50 rounded-xl">
+                            <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
+                            <div class="flex-1">
+                                <div class="font-medium text-navy">Warehouse Alert</div>
+                                <div class="text-sm text-slate-600">Chennai hub at 85% capacity - 5 hours ago</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-3 bg-slate-50 rounded-xl">
+                            <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                            <div class="flex-1">
+                                <div class="font-medium text-navy">New Contract Signed</div>
+                                <div class="text-sm text-slate-600">Global Tech Solutions - $450K - 6 hours ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fleet Status Map -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200" data-aos="fade-up" data-aos-delay="600">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold text-navy">Fleet Status Overview</h3>
+                    <a href="global-fleet-map.html" class="text-electric hover:text-blue-600 font-medium text-sm">View Full Map</a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <span class="font-semibold text-green-800">Active</span>
+                        </div>
+                        <div class="text-2xl font-bold text-green-900">624</div>
+                        <div class="text-sm text-green-700">Vehicles on route</div>
+                    </div>
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <span class="font-semibold text-yellow-800">In Transit</span>
+                        </div>
+                        <div class="text-2xl font-bold text-yellow-900">189</div>
+                        <div class="text-sm text-yellow-700">Between locations</div>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-3 h-3 bg-slate-500 rounded-full"></div>
+                            <span class="font-semibold text-slate-800">Maintenance</span>
+                        </div>
+                        <div class="text-2xl font-bold text-slate-900">34</div>
+                        <div class="text-sm text-slate-700">Scheduled service</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Simulate real-time updates
+        setInterval(() => {
+            const activeShipments = document.querySelector('.text-3xl');
+            if (activeShipments) {
+                const currentValue = parseInt(activeShipments.textContent.replace(',', ''));
+                const change = Math.floor(Math.random() * 5) - 2;
+                const newValue = Math.max(1200, currentValue + change);
+                activeShipments.textContent = newValue.toLocaleString();
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

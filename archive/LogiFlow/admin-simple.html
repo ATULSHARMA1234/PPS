@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal | LogiFlow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0F172A',
+                        electric: '#2563EB',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-navy text-white p-6">
+            <h2 class="text-2xl font-bold mb-8 text-electric">LogiFlow Admin</h2>
+            <nav class="space-y-2">
+                <a href="overview.html" class="block px-4 py-3 bg-electric/20 text-electric rounded-lg">Overview</a>
+                <a href="personnel.html" class="block px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg">Personnel</a>
+                <a href="revenue-hub.html" class="block px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg">Revenue Hub</a>
+                <a href="global-fleet-map.html" class="block px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg">Global Fleet Map</a>
+                <a href="index.html" class="block px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg">Home</a>
+            </nav>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="flex-1 p-8">
+            <h1 class="text-3xl font-bold text-navy mb-4">Admin Dashboard</h1>
+            <p class="text-slate-600 mb-8">Click the sidebar links to navigate to different pages.</p>
+            
+            <div class="bg-white rounded-lg p-6 shadow-sm">
+                <h2 class="text-xl font-semibold mb-4">Quick Navigation Test</h2>
+                <div class="space-y-4">
+                    <a href="overview.html" class="inline-block bg-electric text-white px-4 py-2 rounded hover:bg-blue-600">Go to Overview</a>
+                    <a href="personnel.html" class="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 ml-2">Go to Personnel</a>
+                    <a href="revenue-hub.html" class="inline-block bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 ml-2">Go to Revenue Hub</a>
+                    <a href="global-fleet-map.html" class="inline-block bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 ml-2">Go to Fleet Map</a>
+                </div>
+            </div>
+            
+            <div class="mt-8 bg-white rounded-lg p-6 shadow-sm">
+                <h2 class="text-xl font-semibold mb-4">Debug Information</h2>
+                <p>Current URL: <span id="current-url"></span></p>
+                <p>Server Status: <span class="text-green-600">Running</span></p>
+                <button onclick="testNavigation()" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded">Test JS Navigation</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('current-url').textContent = window.location.href;
+        
+        function testNavigation() {
+            console.log('Testing navigation...');
+            window.location.href = 'overview.html';
+        }
+        
+        console.log('Simple admin portal loaded successfully');
+    </script>
+</body>
+</html>
